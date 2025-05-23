@@ -1,39 +1,34 @@
 # Rock, paper, scissors game 
-# shte imame 3 opcii Rock, paper, scissors i vsqka ot tqh shte gi vkarame v if 
+
 import random
-# array s opcii
-# izpolzvame tuple zashtoto nqma da promenqme stoinostite vutre te sa constanti
+# array with the options
 options = ("Rock","Paper","Scissors")
 
-
-
-#suzdavame bool- koito shte ni pomogne ako user-a iska da igrae pak bez close the program!
-#ako user-a ne iska da igrae otnovo slagame playing = false i taka escape-va loopa
+#Create a bool varible which will help us if the player wants to play again without closing the program
+#if the player won't play again --> playing = False and break the loop
 playing = True
 
 print("Let's play Rock, paper, scissors. There is 33.3%"," for you to win....or not!")
 print("Ready?")
 
-#dokato bool = true loopa shte vurti ako user-a kaje che ne iska da igrae pak --> playing = False
+#keep looping until the player doesn't want to play again then --> playing = False
 while playing:
-    #random opciq v variable
-    # slagame go v loop-a za da moje vseki put da izbere nova opciq
+    #Random option
+    #We put it inside the loop so every time it iterates to pick a new desicion
     random_choice = random.choice(options)
 
-    #slagame izbora na user-a kato None za da moje da ne go suzdavame sled tova - pomaga za sega
-    #slagame go loop-a za da moje da se reset-ne na vseki cikul
-    user_choice = None # samo go suzdavame bez stoinost 
+    #We just create "our" variable as None ,we still haven't seen what the computer has chosen
+    user_choice = None  
     
-    
-    # dokato izbora ne e v options loop-a shte produljava , ako izbere R/P/S preskacha 
-    #avtomatichno user_choice vliza vutre zashtoto e ravno na None vij line 10
+    #While you dont choose between R/P/S you are going to be asked the same question
+    #If you play correctly you skip this loop
     while user_choice not in options :
         user_choice = input("Choose (Rock,Paper,Scissors): ")
-        
+    # We print what the user choose
     print("_________________________________________")    
     print("You choose:",user_choice.capitalize()) 
 
-    # po tozi nachin dori i 10 puti da napisha !=R/P/S posle izliza print    
+    # We print what the random choice from the computer and then we start with comparing  
     print("Computer chose:", random_choice)
     if user_choice == random_choice:
         print("It's a tie! ")
@@ -43,14 +38,15 @@ while playing:
         print("You win!")
     elif user_choice == "Paper" and random_choice == "Rock":
         print("You win!")
-    #Ako nqma ravenstvo ili ne sreshtame win condition - avtomatichno oznachava che gubim!!!!!
+    #If we dont have a "Tie" or a "Win" then automatically its a "Lose"
     else:
         print("You lose!")
-        
-    play_again = input(("Want to play again? (y/n)")).lower()# ako sluchaino napishe "Y" ili "N" vmesto "y" i "n"
+
+    #We ask if the user wants to play again  y/n
+    play_again = input(("Want to play again? (y/n)")).lower()
     
-    #ako user-a ne iska da igrae otnovo(y) , escape the loop
+    #depending on the answer we can change the playing varible we created in the beginning
     if not play_again == "y":
         playing = False
-#Kogato izleznem ot loop-a
+#Final message
 print("Thanks for playing!")
